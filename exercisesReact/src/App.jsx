@@ -2,14 +2,15 @@ import React from 'react';
 import './App.css';
 import Tarjeta from './Tarjeta/Tarjeta';
 import Lista from './Lista/Lista';
+import Buttons from './Buttons/Buttons';
 
 function App() {
-  const nombre = 'Brayan Duque ';
+  // const nombre = 'Brayan Duque ';
   return (
     <>
-      <h1>{nombre}</h1>
-      <Tarjeta titulo={'Este es el titulo children'}/>
-      
+      {/* <h1>{nombre}</h1>
+      <Tarjeta titulo={'Este es el titulo children'}/> */}
+      <Buttons/>
     </>
   );
 }
