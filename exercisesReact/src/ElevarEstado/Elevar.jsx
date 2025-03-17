@@ -6,6 +6,7 @@ export const Elevar = () => {
   return (
     <>
       <h2>Almaty, Kazakhstan</h2>
+      {/* desde el componente padre mandamos el estado como propiedad y realizamos la logica, si index es 0 se muestra el primero, si es 1 se muestra el segundo, pero no los dos a la vez  */}
       <Panel
         title="About"
         isActive={activeIndex === 0}
@@ -28,9 +29,10 @@ export const Elevar = () => {
     </>
   );
 };
-
+//tenemos el componente hijo que es panel, en el colocamos el estado isActive como propiedad para que el componente padre lo pueda manejar.
 function Panel({ title, children, isActive, onShow }) {
   return (
+    //este es un componente que muestra el título y el contenido del panel, además de un botón para mostrarlo si el panel está activo o si se desea mostrarlo. En este caso, se utiliza el index para determinar si el panel es el activo o no.
     <section className="panel">
       <h3>{title}</h3>
       {isActive ? <p>{children}</p> : <button onClick={onShow}>Show</button>}
