@@ -1,12 +1,15 @@
 import React from "react";
 import { useReducer } from "react";
+import AddTask from "./AddTask";
+import TaskList from "./TaskList";
 
 export const Reductor = () => {
+  //se crea el estado y la importacion del reducer y su acción
   const [tasks, dispatch] = useReducer(tasksReducer, initialTasks);
-  
-
+//se crean las funciones para agregar, cambiar y eliminar las tareas
   function handleAddTask(text) {
     dispatch({
+      //se le asigna el tipo de acción el cual corresponde a la acción que va a realizar
       type: "added",
       id: nextId++,
       text: text,
@@ -21,6 +24,7 @@ export const Reductor = () => {
   }
 
   function handleDeleteTask(taskId) {
+    //disparch es la forma de realizar el llamado a la acción
     dispatch({
       type: "deleted",
       id: taskId,
@@ -29,7 +33,8 @@ export const Reductor = () => {
 
   return (
     <>
-      <h1>Prague itinerary</h1>
+    {/*Se crea la logica y se le asigna su función correspondiente*/}
+      <h1>Day off in Kyoto</h1>
       <AddTask onAddTask={handleAddTask} />
       <TaskList
         tasks={tasks}
@@ -39,15 +44,14 @@ export const Reductor = () => {
     </>
   );
 };
-//Esto es una función reductora utilizando por conveniencia el switch
+//se crea el reducer con las acciones que se van a realizar
+//se crea un switch para realizar las acciones
 function tasksReducer(tasks, action) {
   switch (action.type) {
     case "added": {
-      //en el caso de que el usuario quiera añadir una tarea, se añade al array de tareas
       return [
         ...tasks,
         {
-          //se añade un objeto con un id, un texto y un estado de hecho
           id: action.id,
           text: action.text,
           done: false,
@@ -55,8 +59,6 @@ function tasksReducer(tasks, action) {
       ];
     }
     case "changed": {
-      //en el caso de que el usuario quiera cambiar una tarea, se cambia el estado y el argumento t es la tarea
-      //que se quiere cambiar
       return tasks.map((t) => {
         if (t.id === action.task.id) {
           return action.task;
@@ -66,22 +68,17 @@ function tasksReducer(tasks, action) {
       });
     }
     case "deleted": {
-      //en el caso de que el usuario quiera eliminar una tarea, se filtra el array de tareas y se eliminan las tareas
-      //con el id que se quiere eliminar
       return tasks.filter((t) => t.id !== action.id);
     }
     default: {
-      //en caso de que el usuario quiera realizar una acción desconocida, se lanza un error
-      //indicando que la acción es desconocida
       throw Error("Unknown action: " + action.type);
     }
   }
 }
-//esta es la lista de tareas
+//se crea un id para las tareas y la lista de tareas iniciales que queremos que aparezcan 
 let nextId = 3;
 const initialTasks = [
-  { id: 0, text: "Visit Kafka Museum", done: true },
-  { id: 1, text: "Watch a puppet show", done: false },
-  { id: 2, text: "Lennon Wall pic", done: false },
+  { id: 0, text: "Philosopher’s Path", done: true },
+  { id: 1, text: "Visit the temple", done: false },
+  { id: 2, text: "Drink matcha", done: false },
 ];
-export default Reductor;
