@@ -1,5 +1,6 @@
 // import React, { useState } from "react";
 import "./App.css";
+import Cronometro from "./Cronometro/Cronometro";
 import Referencias from "./Referencias/Referencias";
 
 
@@ -9,7 +10,7 @@ function App() {
   
   return (
     <>
-     <Referencias />
+     <Cronometro />
      
     </>
   );
