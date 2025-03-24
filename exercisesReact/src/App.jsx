@@ -2,6 +2,7 @@
 import "./App.css";
 import Cronometro from "./Cronometro/Cronometro";
 import Video from "./ExampleVideo/Video";
+import Perzon from "./HooksPersonalizados/Perzon";
 import Referencias from "./Referencias/Referencias";
 
 
@@ -11,7 +12,7 @@ function App() {
   
   return (
     <>
-     <Video />
+     <Perzon />
      
     </>
   );
